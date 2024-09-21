@@ -2,21 +2,13 @@ const express = require ('express')
 const cors = require ('cors')
 require('dotenv').config()
 const connectDB = require('./config/db')
-const router = require('./routes/index')
-const cookieParser = require('cookie-parser')
 
 
 const app=express()
-app.use(cors({
-    origin : process.env.FRONTEND_URL,
-    credentials : true
-}))
-app.use(express.json())
-app.use(cookieParser())
+app.use(cors())
 
-app.use("/api",router)
 
-const PORT = 8080 || process.env.PORT
+const PORT = 8000 || process.env.PORT
 
 
 connectDB().then (()=>{
